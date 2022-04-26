@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 use Jiangslee\LaravelAliyunSls\Client;
+use Jiangslee\LaravelAliyunSls\Formatters\AliyunSlsFormatter;
 use Jiangslee\LaravelAliyunSls\Kernel\Config;
 
 require __DIR__.'/../vendor/autoload.php';
@@ -32,11 +34,19 @@ $config = new Config([
 $client = new Client($config);
 
 $log = [
-    'data' => '123456',
-    'msg' => 'test',
-    'contents' => Str::random(),
-    'uuid' => str::orderedUuid(),
-
+    'datetime' => new DateTime(),
+    'message' => 'hello',
+    'level_name' => 'info',
+    'channel' => 'default',
+    'context' => [
+        'data' => '123456',
+        'msg' => 'test',
+        'contents' => Str::random(),
+        'uuid' => str::orderedUuid(),
+    ],
+    'extra' => [],
 ];
 
-$client->putLogs($log);
+$logItems = (new AliyunSlsFormatter())->format($log);
+
+$client->putLogs([$logItems]);

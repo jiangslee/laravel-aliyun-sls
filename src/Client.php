@@ -35,8 +35,6 @@ class Client implements ClientInterface
         $params = [];
         $headers = [];
 
-        // $logItem = new LogItem($receive_time, $contents);
-
         $logGroup = new LogGroup();
         $logGroup->setTopic($topic);
         $logGroup->setSource($source_ip);
