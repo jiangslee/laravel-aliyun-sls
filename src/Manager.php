@@ -1,6 +1,6 @@
 <?php
 
-namespace Islenbo\LaravelAliyunSls;
+namespace Jiangslee\LaravelAliyunSls;
 
 use Illuminate\Log\LogManager;
 use Monolog\Handler\HandlerInterface;

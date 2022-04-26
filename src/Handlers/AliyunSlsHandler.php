@@ -1,6 +1,6 @@
 <?php
 
-namespace Islenbo\LaravelAliyunSls\Handlers;
+namespace Jiangslee\LaravelAliyunSls\Handlers;
 
 use Aliyun_Log_Client;
 use Aliyun_Log_Models_PutLogsRequest;

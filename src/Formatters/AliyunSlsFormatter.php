@@ -1,6 +1,6 @@
 <?php
 
-namespace Islenbo\LaravelAliyunSls\Formatters;
+namespace Jiangslee\LaravelAliyunSls\Formatters;
 
 use Aliyun_Log_Models_LogItem;
 use Illuminate\Support\Arr;

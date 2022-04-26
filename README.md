@@ -1,14 +1,17 @@
 # laravel-aliyun-sls
 
+forked from islenbo/laravel-aliyun-sls
+
+thanks islenbo!
 ## Using
 ```shell
-composer require islenbo/laravel-aliyun-sls
+composer require Jiangslee/laravel-aliyun-sls
 ```
 
 add service provider to app.php
 ```PHP
 <?php
-use \Islenbo\LaravelAliyunSls\Providers\LaravelAliyunSlsProvider;
+use \Jiangslee\LaravelAliyunSls\Providers\LaravelAliyunSlsProvider;
 
 return [
     // ...
@@ -36,7 +39,7 @@ return [
         'project' => env('ALIYUN_LOG_PROJECT'),
         'logstore' => env('ALIYUN_LOG_LOGSTORE'),
         'bufferLimit' => env('ALIYUN_LOG_BUFFER_LIMIT', 5),
-        'formatter' => \Islenbo\LaravelAliyunSls\Formatters\AliyunSlsFormatter::class
+        'formatter' => \Jiangslee\LaravelAliyunSls\Formatters\AliyunSlsFormatter::class
     ],
 
     // ...

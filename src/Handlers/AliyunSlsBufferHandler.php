@@ -1,8 +1,8 @@
 <?php
 
-namespace Islenbo\LaravelAliyunSls\Handlers;
+namespace Jiangslee\LaravelAliyunSls\Handlers;
 
-use Islenbo\LaravelAliyunSls\Manager;
+use Jiangslee\LaravelAliyunSls\Manager;
 use Monolog\Handler\BufferHandler;
 use Monolog\Handler\HandlerInterface;
 use Monolog\Logger;

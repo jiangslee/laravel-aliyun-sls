@@ -1,12 +1,12 @@
 <?php
 
-namespace Islenbo\LaravelAliyunSls\Providers;
+namespace Jiangslee\LaravelAliyunSls\Providers;
 
 use Illuminate\Config\Repository;
 use Illuminate\Support\ServiceProvider;
-use Islenbo\LaravelAliyunSls\Formatters\AliyunSlsFormatter;
-use Islenbo\LaravelAliyunSls\Handlers\AliyunSlsBufferHandler;
-use Islenbo\LaravelAliyunSls\Handlers\AliyunSlsHandler;
+use Jiangslee\LaravelAliyunSls\Formatters\AliyunSlsFormatter;
+use Jiangslee\LaravelAliyunSls\Handlers\AliyunSlsBufferHandler;
+use Jiangslee\LaravelAliyunSls\Handlers\AliyunSlsHandler;
 
 class LaravelAliyunSlsProvider extends ServiceProvider
 {

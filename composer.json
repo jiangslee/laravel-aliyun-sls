@@ -3,19 +3,19 @@
   "type": "library",
   "autoload": {
     "psr-4": {
-      "Islenbo\\LaravelAliyunSls\\": "src/"
+      "Jiangslee\\LaravelAliyunSls\\": "src/"
     }
   },
   "authors": [
     {
-      "name": "lenbo",
-      "email": "islenbo@qq.com"
+      "name": "jiangslee",
+      "email": "jiangsili@qq.com"
     }
   ],
   "require": {
     "php": "^7.3|^8.0",
-    "islenbo/aliyun-log-php-sdk": "^1.1",
     "laravel/framework": "^8.0|^9.0",
-    "ext-json": "*"
+    "ext-json": "*",
+    "jiangslee/aliyun-log-php-sdk": "^1.1"
   }
 }
