@@ -4,8 +4,8 @@ namespace Jiangslee\LaravelAliyunSls\Kernel\Traits;
 
 use Jiangslee\LaravelAliyunSls\Kernel\Contracts\ConfigInterface;
 
-trait WithConfig {
-
+trait WithConfig
+{
     protected array|ConfigInterface $config;
 
     /**

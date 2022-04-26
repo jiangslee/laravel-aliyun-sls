@@ -3,7 +3,6 @@
 namespace Jiangslee\LaravelAliyunSls\Providers;
 
 use Illuminate\Config\Repository;
-use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Jiangslee\LaravelAliyunSls\Formatters\AliyunSlsFormatter;
 use Jiangslee\LaravelAliyunSls\Handlers\AliyunSlsBufferHandler;
@@ -49,31 +48,35 @@ class LaravelAliyunSlsProvider extends ServiceProvider
         $this->config->set('logging.channels.aliyun-sls', $this->getChannel());
     }
 
-    private function getClientConfig()
-    {
-        return (new Collection($this->getChannel()))->get('handler_with.handlerConfig.handler_with');
-    }
-
     private function getChannel(): array
     {
         $slsConfig = $this->config->get('aliyunsls');
         return [
             'driver' => 'monolog',
-            'handler' => AliyunSlsBufferHandler::class,
+            'handler' => AliyunSlsHandler::class,
             'handler_with' => [
-                'handlerConfig' => [
-                    'handler' => AliyunSlsHandler::class,
-                    'handler_with' => [
-                        'endpoint' => $slsConfig['endpoint'],
-                        'accessKeyId' => $slsConfig['accessKeyId'],
-                        'accessKey' => $slsConfig['accessKey'],
-                        'project' => $slsConfig['project'],
-                        'logstore' => $slsConfig['logstore'],
-                    ],
-                ],
-                'bufferLimit' => $slsConfig['bufferLimit'],
+                'endpoint' => $slsConfig['endpoint'],
+                'accessKeyId' => $slsConfig['accessKeyId'],
+                'accessKey' => $slsConfig['accessKey'],
+                'project' => $slsConfig['project'],
+                'logstore' => $slsConfig['logstore'],
             ],
             'formatter' => class_exists($slsConfig['formatter']) ? $slsConfig['formatter'] : AliyunSlsFormatter::class,
+
+            // 'handler' => AliyunSlsBufferHandler::class,
+            // 'handler_with' => [
+            //     'handlerConfig' => [
+            //         'handler' => AliyunSlsHandler::class,
+            //         'handler_with' => [
+            //             'endpoint' => $slsConfig['endpoint'],
+            //             'accessKeyId' => $slsConfig['accessKeyId'],
+            //             'accessKey' => $slsConfig['accessKey'],
+            //             'project' => $slsConfig['project'],
+            //             'logstore' => $slsConfig['logstore'],
+            //         ],
+            //     ],
+            //     'bufferLimit' => $slsConfig['bufferLimit'],
+            // ],
         ];
     }
 }

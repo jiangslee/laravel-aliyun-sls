@@ -1,4 +1,5 @@
 <?php
+
 namespace Jiangslee\LaravelAliyunSls\AliyunLogModel;
 
 /**
@@ -12,7 +13,6 @@ namespace Jiangslee\LaravelAliyunSls\AliyunLogModel;
  */
 class LogItem
 {
-
     /**
      * @var integer time of the log item, the default time if the now time.
      */
@@ -32,14 +32,14 @@ class LogItem
      */
     public function __construct($time = null, $contents = null)
     {
-        if (! $time) {
-            $time = time ();
+        if (!$time) {
+            $time = time();
         }
         $this->time = $time;
         if ($contents) {
             $this->contents = $contents;
         } else {
-            $this->contents = array ();
+            $this->contents = array();
         }
     }
 

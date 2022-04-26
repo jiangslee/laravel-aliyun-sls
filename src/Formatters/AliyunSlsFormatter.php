@@ -2,8 +2,7 @@
 
 namespace Jiangslee\LaravelAliyunSls\Formatters;
 
-use Aliyun_Log_Models_LogItem;
-use Illuminate\Support\Arr;
+use Jiangslee\LaravelAliyunSls\AliyunLogModel\LogItem;
 use Monolog\DateTimeImmutable;
 use Monolog\Formatter\FormatterInterface;
 use Throwable;
@@ -21,15 +20,13 @@ class AliyunSlsFormatter implements FormatterInterface
     {
         /** @var DateTimeImmutable $datetime */
         $datetime = $record['datetime'];
-        $uid = Arr::pull($record, 'extra.uid', '');
 
-        $result = new Aliyun_Log_Models_LogItem();
+        $result = new LogItem();
         $result->setTime($datetime->getTimestamp());
         $result->setContents([
             'message' => $record['message'],
             'level' => $record['level_name'],
             'env' => $record['channel'],
-            'uid' => $uid,
             'context' => $this->convert($record['context']),
             'extra' => $this->convert($record['extra']),
         ]);

@@ -6,9 +6,6 @@ use Illuminate\Support\Arr;
 
 class Utils
 {
-
-
-
     public static function getSignature($method, $resource, $accessKeySecret, $params, $headers)
     {
         if (!$accessKeySecret) {
@@ -33,14 +30,16 @@ class Utils
         ksort($header);
         $content = '';
         $first = true;
-        foreach ($header as $key => $value)
+        foreach ($header as $key => $value) {
             if (strpos($key, "x-log-") === 0 || strpos($key, "x-acs-") === 0) {
                 if ($first) {
                     $content .= $key . ':' . $value;
                     $first = false;
-                } else
+                } else {
                     $content .= "\n" . $key . ':' . $value;
+                }
             }
+        }
         return $content;
     }
     public static function hmacSHA1($content, $key)
@@ -58,8 +57,9 @@ class Utils
                 if ($first) {
                     $first = false;
                     $urlString = "$key=$value";
-                } else
+                } else {
                     $urlString .= "&$key=$value";
+                }
             }
             return $resource . '?' . $urlString;
         }
@@ -83,7 +83,7 @@ class Utils
     public static function getLocalIp()
     {
         $ip = 'unknow_ip';
-        
+
         if (isset($_SERVER)) {
             $ip = Arr::get($_SERVER, 'SERVER_ADDR') ?? Arr::get($_SERVER, 'LOCAL_ADDR');
         } else {
@@ -99,7 +99,7 @@ class Utils
                 }
             }
         }
-        
+
         return $ip;
     }
 }

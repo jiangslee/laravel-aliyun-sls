@@ -2,8 +2,6 @@
 
 namespace Jiangslee\LaravelAliyunSls\Handlers;
 
-use Aliyun_Log_Client;
-use Aliyun_Log_Models_PutLogsRequest;
 use Jiangslee\LaravelAliyunSls\Client;
 use Jiangslee\LaravelAliyunSls\Kernel\Config;
 use Monolog\Handler\AbstractHandler;
@@ -14,7 +12,8 @@ use Monolog\Logger;
 
 class AliyunSlsHandler extends AbstractHandler implements FormattableHandlerInterface
 {
-    use ProcessableHandlerTrait, FormattableHandlerTrait;
+    use ProcessableHandlerTrait;
+    use FormattableHandlerTrait;
 
     /** @var string */
     private $project;
@@ -41,6 +40,11 @@ class AliyunSlsHandler extends AbstractHandler implements FormattableHandlerInte
             'logstore' => $logstore,
         ]));
     }
+
+    // protected function write(array $record):void
+    // {
+    //     $this->handleBatch([$record]);
+    // }
 
     public function handleBatch(array $records): void
     {
@@ -75,5 +79,4 @@ class AliyunSlsHandler extends AbstractHandler implements FormattableHandlerInte
             $this->topic
         );
     }
-
 }

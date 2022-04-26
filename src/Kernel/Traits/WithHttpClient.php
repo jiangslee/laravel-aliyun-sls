@@ -1,10 +1,12 @@
 <?php
+
 namespace Jiangslee\LaravelAliyunSls\Kernel\Traits;
 
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-trait WithHttpClient {
 
+trait WithHttpClient
+{
     protected ?HttpClientInterface $httpClient = null;
     public function createClient(): HttpClientInterface
     {

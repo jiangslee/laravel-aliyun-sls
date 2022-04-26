@@ -10,8 +10,8 @@ use JetBrains\PhpStorm\Pure;
 /**
  * @implements \ArrayAccess<mixed, mixed>
  */
-class Config implements ConfigInterface {
-
+class Config implements ConfigInterface
+{
     /**
      * @var array<string>
      */
