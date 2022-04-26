@@ -8,10 +8,9 @@ thanks islenbo!
 composer require Jiangslee/laravel-aliyun-sls
 ```
 
-add service provider to app.php
+add service provider to `config/app.php`
 ```PHP
 <?php
-use \Jiangslee\LaravelAliyunSls\Providers\LaravelAliyunSlsProvider;
 
 return [
     // ...
@@ -19,7 +18,7 @@ return [
         /*
          * Package Service Providers...
          */
-        LaravelAliyunSlsProvider::class,
+        \Jiangslee\LaravelAliyunSls\Providers\LaravelAliyunSlsProvider::class,
     ],
     // ...
 ];

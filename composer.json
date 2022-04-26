@@ -16,6 +16,7 @@
     "php": "^7.3|^8.0",
     "laravel/framework": "^8.0|^9.0",
     "ext-json": "*",
-    "jiangslee/aliyun-log-php-sdk": "^1.1"
+    "jiangslee/aliyun-log-php-sdk": "^1.1",
+    "symfony/http-client": "^6.0"
   }
 }

@@ -4,6 +4,8 @@ namespace Jiangslee\LaravelAliyunSls\Handlers;
 
 use Aliyun_Log_Client;
 use Aliyun_Log_Models_PutLogsRequest;
+use Jiangslee\LaravelAliyunSls\Client;
+use Jiangslee\LaravelAliyunSls\Kernel\Config;
 use Monolog\Handler\AbstractHandler;
 use Monolog\Handler\FormattableHandlerInterface;
 use Monolog\Handler\FormattableHandlerTrait;
@@ -20,7 +22,7 @@ class AliyunSlsHandler extends AbstractHandler implements FormattableHandlerInte
     /** @var string */
     private $logstore;
 
-    /** @var Aliyun_Log_Client */
+    /** @var Client */
     private $slsClient;
 
     private $topic = '';
@@ -31,7 +33,13 @@ class AliyunSlsHandler extends AbstractHandler implements FormattableHandlerInte
 
         $this->project = $project;
         $this->logstore = $logstore;
-        $this->slsClient = new Aliyun_Log_Client($endpoint, $accessKeyId, $accessKey);
+        $this->slsClient = new Client(new Config([
+            'endpoint' => $endpoint,
+            'accessKeyId' => $accessKeyId,
+            'accessKey' => $accessKey,
+            'project' => $project,
+            'logstore' => $logstore,
+        ]));
     }
 
     public function handleBatch(array $records): void
@@ -59,8 +67,12 @@ class AliyunSlsHandler extends AbstractHandler implements FormattableHandlerInte
 
     private function putLogs(array $logItems): void
     {
+        // $this->project, $this->logstore, $this->topic, gethostname(), $logItems
         $this->slsClient->putLogs(
-            new Aliyun_Log_Models_PutLogsRequest($this->project, $this->logstore, $this->topic, gethostname(), $logItems)
+            $logItems,
+            gethostname(),
+            '',
+            $this->topic
         );
     }
 
