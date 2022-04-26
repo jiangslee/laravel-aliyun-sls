@@ -1,5 +1,5 @@
 {
-  "name": "islenbo/laravel-aliyun-sls",
+  "name": "jiangslee/laravel-aliyun-sls",
   "type": "library",
   "autoload": {
     "psr-4": {
