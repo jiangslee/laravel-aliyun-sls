@@ -40,16 +40,18 @@ class Client implements ClientInterface
         $logGroup->setSource($source_ip);
 
         foreach ($logItems as $logItem) {
-            $log = new Log();
-            $log->setTime($logItem->getTime());
-            $contents = $logItem->getContents();
-            foreach ($contents as $key => $value) {
-                $content = new LogContent();
-                $content->setKey($key);
-                $content->setValue($value);
-                $log->addContents($content);
-            };
-            $logGroup->addLogs($log);
+            if ($logItem instanceof LogItem) {
+                $log = new Log();
+                $log->setTime($logItem->getTime());
+                $contents = $logItem->getContents();
+                foreach ($contents as $key => $value) {
+                    $content = new LogContent();
+                    $content->setKey($key);
+                    $content->setValue($value);
+                    $log->addContents($content);
+                };
+                $logGroup->addLogs($log);
+            }
         }
 
 

@@ -16,11 +16,13 @@
     "php": "^7.3|^8.0",
     "laravel/framework": "^8.0|^9.0",
     "ext-json": "*",
-    "symfony/http-client": "^6.0",
-    "friendsofphp/php-cs-fixer": "^3.8"
+    "symfony/http-client": "^6.0"
   },
   "scripts": {
     "check-style": "php-cs-fixer fix --using-cache=no --diff --dry-run --allow-risky=yes --ansi",
     "fix-style": "php-cs-fixer fix --using-cache=no --allow-risky=yes --ansi"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.8"
   }
 }
